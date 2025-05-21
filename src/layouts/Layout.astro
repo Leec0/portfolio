@@ -1,16 +1,22 @@
 ---
 import "../styles/global.css"
+import Navbar from "../components/Navbar.astro";
 ---
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="./" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio Leeco</title>
-	</head>
-	<main class="m-auto max-w-5xl px-4 py-5 cursor-default">
-		<slot />
-	</main>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <link rel="stylesheet" href="./"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Portfolio Leeco</title>
+</head>
+
+<body class="font-sans mx-auto px-4 py-5 cursor-default">
+<Navbar/>
+<main class="my-4 mx-auto max-w-5xl">
+    <slot/>
+</main>
+</body>
+
 </html>
