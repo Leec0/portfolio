@@ -1,6 +1,6 @@
 ---
 import Brand from "../pageElements/Brand.astro";
-import NavItem from "./NavItem.astro";
+import Button from "../pageElements/Button.astro";
 
 const {pathname} = Astro.url
 const FirstSegment = '/' + pathname.split("/")[1] || '';
@@ -14,7 +14,7 @@ const navLinks = [
     <Brand/>
     <section class="flex flex-col md:flex-row justify-end items-center gap-2 md:gap-4">
         {navLinks.map(link => (
-                <NavItem href={link.href} style={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</NavItem>
+                <Button href={link.href} theme={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</Button>
         ))}
     </section>
 </nav>

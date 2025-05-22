@@ -3,7 +3,7 @@ import type {HTMLAttributes} from "astro/types";
 interface Props extends HTMLAttributes<"button"> {
     type?: "button" | "submit";
     size?: "sm" | "md" | "lg";
-    theme?: "primary";
+    theme?: "primary" | "inactive" | "active";
     classes?: string;
     href?: string;
 }
@@ -18,16 +18,18 @@ const {
 } = Astro.props
 
 const sizeClasses = {
-    sm: "text-sm px-4 py-2",
-    md: "text-md px-4 py-2",
-    lg: "text-lg px-4 py-2"
+    sm: "text-sm px-5 py-2",
+    md: "text-md px-5 py-2",
+    lg: "text-lg px-5 py-2"
 }[size]
 
 const themeClasses = {
-    primary: "bg-orange-400 border-orange-500 text-white hover:bg-amber-400 hover:border-amber-500 hover:scale-105 transition duration-100 ease-in-out",
+    primary: "bg-orange-400 hover:bg-orange-500 shadow-md hover:shadow-lg text-white",
+    inactive: "hover:bg-orange-200",
+    active: "bg-orange-400 hover:bg-orange-500 text-white",
 }[theme]
 
-const baseClasses = "border cursor-pointer font-bold text-center rounded-xl"
+const baseClasses = "font-semibold text-center cursor-pointer rounded-xl transition-all duration-200"
 
 const combinedClasses = `${baseClasses} ${themeClasses} ${sizeClasses} ${classes}`
 ---
