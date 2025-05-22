@@ -1,0 +1,20 @@
+---
+import {type CollectionEntry, getCollection} from "astro:content";
+type ProjectEntry = CollectionEntry<'projects'>;
+
+const projects = await getCollection("projects");
+import ProjectCard from "./ProjectCard.astro";
+---
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {
+        projects
+            .sort((a: ProjectEntry, b: ProjectEntry) => {
+                const dateA = new Date(a.data.date);
+                const dateB = new Date(b.data.date);
+                return dateB.getTime() - dateA.getTime();
+            })
+            .map((project: ProjectEntry) => (
+                    <ProjectCard title={project.data.title} description={project.data.description}
+                                 date={project.data.date} slug={project.slug}/>))
+    }
+</section>

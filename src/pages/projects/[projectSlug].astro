@@ -2,7 +2,7 @@
 import {getCollection, render, type CollectionEntry} from "astro:content";
 import {getReadTime} from '../../lib/readTime'
 import Layout from "../../layouts/Layout.astro";
-import Hero from "../../components/Hero.astro";
+import Hero from "../../components/pageElements/Hero.astro";
 import Link from "../../components/Link.astro";
 
 type ProjectEntry = CollectionEntry<'projects'>;
@@ -18,7 +18,7 @@ const {project} = Astro.props;
 const typeProject = project as ProjectEntry;
 const {Content} = await render(project);
 ---
-<Layout pageTitle="leeco.dev">
+<Layout>
     <Hero slot="hero">
         <section class="flex flex-col gap-2 text-center">
             <h1 class="text-4xl font-bold">{typeProject.data.title}</h1>
@@ -26,7 +26,7 @@ const {Content} = await render(project);
         </section>
     </Hero>
     <section class="flex flex-row justify-between items-center mb-6">
-        <Link href="/">← Go back</Link>
+        <Link href="/projects">← Go back</Link>
         <p class="font-semibold">{getReadTime(typeProject.body)} Minute read</p>
     </section>
     <article class="projects-container">

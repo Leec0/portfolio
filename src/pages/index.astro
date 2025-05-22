@@ -1,13 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import {type CollectionEntry, getCollection} from "astro:content";
-import ProjectCard from "../components/ProjectCard.astro";
+import Hero from "../components/pageElements/Hero.astro";
 import steveImage from "../assets/steve.png"
+import Projects from "../components/Projects.astro";
 
-type ProjectEntry = CollectionEntry<'projects'>;
-
-const projects = await getCollection("projects");
 ---
 <Layout pageTitle="leeco.dev">
     <Hero slot="hero" height="700px">
@@ -19,7 +15,7 @@ const projects = await getCollection("projects");
                     Belgium. I love making games and tinkering with websites or just with technology in general.
                     Currently I'm the webmaster of Scouts Rupelmonde.</p>
             </article>
-            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full" />
+            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
     </Hero>
     <section>
@@ -27,17 +23,6 @@ const projects = await getCollection("projects");
             <h2 class="text-3xl font-bold">My Projects</h2>
             <p class="text-lg">A collection of project I've worked on.</p>
         </section>
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {
-                projects
-                    .sort((a: ProjectEntry, b: ProjectEntry) => {
-                        const dateA = new Date(a.data.date);
-                        const dateB = new Date(b.data.date);
-                        return dateB.getTime() - dateA.getTime();
-                    })
-                    .map((project: ProjectEntry) => (
-                        <ProjectCard title={project.data.title} description={project.data.description} date={project.data.date} slug={project.slug}/>))
-            }
-        </section>
+        <Projects/>
     </section>
 </Layout>
