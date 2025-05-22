@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css"
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const {pageTitle} = Astro.props
 ---
 <html lang="en">
 <head>
@@ -8,15 +11,13 @@ import Navbar from "../components/Navbar.astro";
     <meta name="viewport" content="width=device-width"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <link rel="stylesheet" href="./"/>
-    <meta name="generator" content={Astro.generator}/>
-    <title>Portfolio Leeco</title>
+    <title>{pageTitle}</title>
 </head>
-
-<body class="font-sans mx-auto px-4 py-5 cursor-default">
+<body class="font-sans mx-auto px-4 py-5 cursor-default flex flex-col min-h-screen">
 <Navbar/>
-<main class="my-4 mx-auto max-w-5xl">
+<main class="flex-1 my-4 mx-auto max-w-5xl w-full">
     <slot/>
 </main>
+<Footer/>
 </body>
-
 </html>
