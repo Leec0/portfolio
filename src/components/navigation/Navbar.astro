@@ -1,0 +1,20 @@
+---
+import Brand from "../pageElements/Brand.astro";
+import NavItem from "./NavItem.astro";
+
+const {pathname} = Astro.url
+const FirstSegment = '/' + pathname.split("/")[1] || '';
+
+const navLinks = [
+    {name: "Home", href: "/"},
+    {name: "Projects", href: "/projects"},
+]
+---
+<nav class="bg-stone-100 flex flex-col md:flex-row gap-4 justify-between items-center px-4 md:px-24 py-2">
+    <Brand/>
+    <section class="flex flex-col md:flex-row justify-end items-center gap-2 md:gap-4">
+        {navLinks.map(link => (
+                <NavItem href={link.href} style={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</NavItem>
+        ))}
+    </section>
+</nav>

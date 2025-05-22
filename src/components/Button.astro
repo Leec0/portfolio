@@ -1,7 +1,42 @@
 ---
-const {href = "#", label = "Click me"} = Astro.props
+import type {HTMLAttributes} from "astro/types";
+interface Props extends HTMLAttributes<"button"> {
+    type?: "button" | "submit";
+    size?: "sm" | "md" | "lg";
+    theme?: "primary";
+    classes?: string;
+    href?: string;
+}
+
+const {
+    type = "button",
+    size = "md",
+    theme = "primary",
+    classes,
+    href,
+    ...rest
+} = Astro.props
+
+const sizeClasses = {
+    sm: "text-sm px-4 py-2",
+    md: "text-md px-4 py-2",
+    lg: "text-lg px-4 py-2"
+}[size]
+
+const themeClasses = {
+    primary: "bg-orange-400 border-orange-500 text-white hover:bg-amber-400 hover:border-amber-500 hover:scale-105 transition duration-100 ease-in-out",
+}[theme]
+
+const baseClasses = "border cursor-pointer font-bold text-center rounded-xl"
+
+const combinedClasses = `${baseClasses} ${themeClasses} ${sizeClasses} ${classes}`
 ---
-<a class="bg-purple-500 text-white text-xl font-semibold px-4 py-2 rounded-xl hover:bg-fuchsia-500 hover:scale-110 transition duration-100 ease-in-out"
-   href={href}>
-    {label}
+{href ? (
+<a href={href} class={combinedClasses} {...rest}>
+    <slot/>
 </a>
+    ) : (
+<button type={type} class={combinedClasses} {...rest}>
+    <slot/>
+</button>
+    )}

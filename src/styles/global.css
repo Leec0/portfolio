@@ -1,6 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "Montserrat", sans-serif;
+    --font-rubik: "Rubik", sans-serif;
+    --font-permanant: "Permanent Marker", sans-serif;
+}
+
+.projects-container {
+    @apply flex flex-col gap-4;
+}
+
+.projects-container h2 {
+    @apply font-bold text-2xl;
+}
+
+.projects-container h3 {
+    @apply font-semibold text-xl;
+}
+
+.projects-container h4, h5, h6 {
+    @apply font-semibold text-lg;
+}
+
+.projects-container a {
+    @apply underline text-orange-400 hover:text-amber-400 transition;
+}
+
+.projects-container ul {
+    @apply ml-5;
+    list-style: none;
+    padding-left: 0;
+}
+
+.projects-container li {
+    @apply flex flex-row items-start gap-2;
+}
+
+.projects-container li::before {
+    content: '-';
+}
+
+.projects-container img {
+    @apply rounded-md;
+}
+
+.tracking-in-expand {
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) ;
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }

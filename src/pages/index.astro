@@ -1,14 +1,28 @@
 ---
-
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";---
+import Hero from "../components/pageElements/Hero.astro";
+import steveImage from "../assets/steve.png"
+import Projects from "../components/Projects.astro";
 
-<Layout pageTitle="Construction">
-    <section class="flex flex-col items-center justify-center text-center h-[80vh] gap-6">
-        <section class="flex flex-col text-center gap-2">
-            <h1 class="text-4xl font-black">Under Construction!</h1>
-            <p class="text-xl font-bold">This website is currently under construction.</p>
+---
+<Layout pageTitle="leeco.dev">
+    <Hero slot="hero" height="700px">
+        <section class="grid grid-cols-6 items-center mx-auto max-w-5xl w-full">
+            <article class="col-start-1 col-span-6 md:col-span-3 flex flex-col gap-4">
+                <h1 class="font-bold text-7xl tracking-in-expand">Welcome.</h1>
+                <p class="tracking-in-expand text-base">My name is Lee, a student applied computer science @ Karel de
+                    Groote Antwerpen based in Kruibeke,
+                    Belgium. I love making games and tinkering with websites or just with technology in general.
+                    Currently I'm the webmaster of Scouts Rupelmonde.</p>
+            </article>
+            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
-        <Button href="https://github.com/leec0" label="GitHub"/>
+    </Hero>
+    <section>
+        <section class="text-center my-4">
+            <h2 class="text-3xl font-bold">My Projects</h2>
+            <p class="text-lg">A collection of project I've worked on.</p>
+        </section>
+        <Projects/>
     </section>
 </Layout>

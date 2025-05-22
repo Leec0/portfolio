@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 ---
 <Layout pageTitle="404 - Page Not Found">
-    <section class="flex flex-col items-center justify-center h-[80vh] gap-6">
-        <section class="flex flex-col gap-2 text-center">
-            <h1 class="font-black text-4xl">404 - Page Not Found</h1>
-            <p class="font-bold text-xl">Sorry, the page your looking for doesn't exist.</p>
+        <section class="flex flex-col items-center justify-center h-[60vh] gap-6">
+            <section class="flex flex-col gap-2 text-center">
+                <h1 class="font-extrabold text-4xl">404 - Page Not Found</h1>
+                <p class="font-bold text-xl">Sorry, the page your looking for doesn't exist.</p>
+            </section>
+            <Button size="lg" href="/">Back to home</Button>
         </section>
-        <Button href="/" label="Back to home"/>
-    </section>
 </Layout>
