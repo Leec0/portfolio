@@ -1,9 +1,8 @@
 ---
 import "../styles/global.css"
-import bgSvg from "../assets/background.svg"
 import Footer from "../components/Footer.astro";
 
-const {pageTitle} = Astro.props
+const {pageTitle = "leeco.dev"} = Astro.props
 ---
 <html lang="en">
 <head>
@@ -13,8 +12,9 @@ const {pageTitle} = Astro.props
     <link rel="stylesheet" href="./"/>
     <title>{pageTitle}</title>
 </head>
-<body class="font-sans bg-white text-gray-950 cursor-default flex flex-col min-h-screen bg-cover bg-center" style={`background-image: url(${bgSvg.src})`}>
-<main class="flex-1 my-4 mx-auto max-w-5xl w-full">
+<body class="font-rubik bg-stone-100 text-gray-950 cursor-default flex flex-col min-h-screen">
+<slot name="hero"/>
+<main class="flex-1 m-auto max-w-5xl w-full px-4 xl:px-0">
     <slot/>
 </main>
 <Footer/>

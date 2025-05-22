@@ -1,0 +1,24 @@
+---
+import {getCollection, render, type CollectionEntry} from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+
+type ProjectEntry = CollectionEntry<'projects'>;
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+    return projects.map((project: ProjectEntry) => ({
+        params: {projectSlug: project.data.slug},
+        props: {project},
+    }));
+}
+const {project} = Astro.props;
+const typeProject = project as ProjectEntry;
+const {Content} = await render(project);
+---
+<Layout pageTitle="leeco.dev">
+    <Hero slot="hero">
+        <h1 class="text-4xl font-bold">{typeProject.data.title}</h1>
+    </Hero>
+    <Content/>
+</Layout>

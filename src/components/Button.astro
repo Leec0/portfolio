@@ -1,7 +1,6 @@
 ---
-const {href = "#", label = "Click me"} = Astro.props
 ---
-<a class="bg-purple-500 text-white text-xl font-semibold px-4 py-2 rounded-xl hover:bg-fuchsia-500 hover:scale-110 transition duration-100 ease-in-out"
-   href={href}>
-    {label}
-</a>
+<section
+        class="bg-orange-400 border border-orange-500 text-white font-bold text-center px-4 py-2 rounded-xl hover:bg-amber-400 hover:border-amber-500 hover:scale-105 transition duration-100 ease-in-out">
+    <slot/>
+</section>

@@ -1,14 +1,37 @@
 ---
-
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";---
+import Hero from "../components/Hero.astro";
+import {type CollectionEntry, getCollection} from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
 
-<Layout pageTitle="Construction">
-    <section class="flex flex-col items-center justify-center text-center h-[80vh] gap-6">
-        <section class="flex flex-col text-center gap-2">
-            <h1 class="text-4xl font-black">Under Construction!</h1>
-            <p class="text-xl font-bold">This website is currently under construction.</p>
+type ProjectEntry = CollectionEntry<'projects'>;
+
+const projects = await getCollection("projects");
+---
+<Layout pageTitle="leeco.dev">
+    <Hero slot="hero" height="700px">
+        <section class="grid grid-cols-6 items-center mx-auto max-w-5xl w-full">
+            <article class="col-start-1 col-span-6 md:col-span-3 flex flex-col gap-4">
+                <h1 class="font-bold text-7xl tracking-in-expand">Welcome.</h1>
+                <p class="tracking-in-expand text-base">My name is Lee, a student applied computer science @ Karel de
+                    Groote Antwerpen based in Kruibeke,
+                    Belgium. I love making games and tinkering with websites or just with technology in general.
+                    Currently I'm the webmaster of Scouts Rupelmonde.</p>
+            </article>
+            <section
+                    class="hidden md:block col-start-5 col-span-2 h-60 w-full bg-stone-800 animate-pulse rounded-md"></section>
         </section>
-        <Button href="https://github.com/leec0" label="GitHub"/>
+    </Hero>
+    <section>
+        <section class="text-center my-4">
+            <h2 class="text-3xl font-bold">My Projects</h2>
+            <p class="text-lg">A collection of project I've worked on.</p>
+        </section>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {
+                projects.map((project: ProjectEntry) => (
+                        <ProjectCard title={project.data.title} description={project.data.description} date="test date" slug={project.slug}/>))
+            }
+        </section>
     </section>
 </Layout>
