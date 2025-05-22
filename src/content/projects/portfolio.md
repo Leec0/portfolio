@@ -15,3 +15,6 @@ This site showcases the projects I’ve worked on and the tools I enjoy using. I
 I use this space to document and share my work, highlight web development skills, and provide context around each project — from technical choices to design decisions.
 
 Feel free to explore the [Projects](/projects) section to see what I’ve been working on!
+
+### GitHub Repository
+[View the code on GitHub](https://github.com/leec0/portfolio)
