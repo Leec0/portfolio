@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css"
-import Navbar from "../components/Navbar.astro";
+import bgSvg from "../assets/background.svg"
 import Footer from "../components/Footer.astro";
 
 const {pageTitle} = Astro.props
@@ -13,8 +13,7 @@ const {pageTitle} = Astro.props
     <link rel="stylesheet" href="./"/>
     <title>{pageTitle}</title>
 </head>
-<body class="font-sans mx-auto px-4 py-5 cursor-default flex flex-col min-h-screen">
-<Navbar/>
+<body class="font-sans bg-white text-gray-950 cursor-default flex flex-col min-h-screen bg-cover bg-center" style={`background-image: url(${bgSvg.src})`}>
 <main class="flex-1 my-4 mx-auto max-w-5xl w-full">
     <slot/>
 </main>
