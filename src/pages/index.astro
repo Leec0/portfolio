@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import {type CollectionEntry, getCollection} from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
+import steveImage from "../assets/steve.png"
 
 type ProjectEntry = CollectionEntry<'projects'>;
 
@@ -18,8 +19,7 @@ const projects = await getCollection("projects");
                     Belgium. I love making games and tinkering with websites or just with technology in general.
                     Currently I'm the webmaster of Scouts Rupelmonde.</p>
             </article>
-            <section
-                    class="hidden md:block col-start-5 col-span-2 h-60 w-full bg-stone-800 animate-pulse rounded-md"></section>
+            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full" />
         </section>
     </Hero>
     <section>
@@ -29,8 +29,14 @@ const projects = await getCollection("projects");
         </section>
         <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {
-                projects.map((project: ProjectEntry) => (
-                        <ProjectCard title={project.data.title} description={project.data.description} date="test date" slug={project.slug}/>))
+                projects
+                    .sort((a: ProjectEntry, b: ProjectEntry) => {
+                        const dateA = new Date(a.data.date);
+                        const dateB = new Date(b.data.date);
+                        return dateB.getTime() - dateA.getTime();
+                    })
+                    .map((project: ProjectEntry) => (
+                        <ProjectCard title={project.data.title} description={project.data.description} date={project.data.date} slug={project.slug}/>))
             }
         </section>
     </section>
