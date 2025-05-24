@@ -3,19 +3,24 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/pageElements/Hero.astro";
 import steveImage from "../assets/steve.png"
 import Projects from "../components/projects/Projects.astro";
-
+import AnimatedSplitChars from "../components/pageElements/AnimatedSplitChars.vue";
+import AnimatedSplitWords from "../components/pageElements/AnimatedSplitWords.vue";
+import Image from "astro/components/Image.astro";
 ---
 <Layout pageTitle="leeco.dev">
     <Hero slot="hero" height="700px">
         <section class="grid grid-cols-6 items-center mx-auto max-w-5xl w-full">
             <article class="col-start-1 col-span-6 md:col-span-3 flex flex-col gap-4">
-                <h1 class="font-bold text-7xl tracking-in-expand">Welcome.</h1>
-                <p class="tracking-in-expand text-base">My name is Lee, a student applied computer science @ Karel de
-                    Groote Antwerpen based in Kruibeke,
-                    Belgium. I love making games and tinkering with websites or just with technology in general.
-                    Currently I'm the webmaster of Scouts Rupelmonde.</p>
+                <AnimatedSplitChars client:load>
+                    <h1 class="text-7xl font-bold">Welcome.</h1>
+                </AnimatedSplitChars>
+                <AnimatedSplitWords client:load>
+                    <p class="text-base">My name is Lee Coppens, a student applied computer science @ Karel de Groote Antwerpen
+                        based in Kruibeke, Belgium. I love making games and tinkering with websites or just with
+                        technology in general. Currently I'm the webmaster of Scouts Rupelmonde.</p>
+                </AnimatedSplitWords>
             </article>
-            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
+            <Image src={steveImage} alt="steve" loading="eager" class="hidden md:block col-start-5 col-span-2 w-full" />
         </section>
     </Hero>
     <section>
