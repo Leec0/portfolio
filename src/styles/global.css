@@ -24,7 +24,7 @@
 }
 
 .projects-container a {
-    @apply underline text-orange-400 hover:text-amber-400 transition;
+    @apply underline text-slate-700 hover:text-slate-800 transition;
 }
 
 .projects-container ul {
