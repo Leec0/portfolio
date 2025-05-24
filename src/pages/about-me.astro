@@ -1,0 +1,23 @@
+---
+import Hero from "../components/pageElements/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import NumberCard from "../components/pageElements/NumberCard.astro";
+import {getYearsPassed} from "../lib/calcYearsPassed";
+import Link from "../components/pageElements/Link.astro";
+---
+<Layout>
+    <Hero slot="hero">
+        <section class="flex flex-col gap-2 text-center">
+            <h1 class="text-4xl font-bold">About Me</h1>
+            <p class="text-lg">Student developer with a passion for creative tech.</p>
+        </section>
+    </Hero>
+    <section class="mb-4">
+        <Link href="/">← Go back</Link>
+    </section>
+    <section class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-4 justify-between items-center">
+        <NumberCard text="Years old" number={getYearsPassed(new Date('2005-02-15'))} />
+        <NumberCard text="Years scouting" number={getYearsPassed(new Date('2018-10-30'))} />
+        <NumberCard text="Graduation year" number={2026}/>
+    </section>
+</Layout>

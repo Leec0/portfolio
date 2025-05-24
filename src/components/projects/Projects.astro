@@ -4,6 +4,12 @@ type ProjectEntry = CollectionEntry<'projects'>;
 
 const projects = await getCollection("projects");
 import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+    amountDisplayed?: number;
+}
+
+const {amountDisplayed} = Astro.props;
 ---
 <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {
@@ -13,6 +19,7 @@ import ProjectCard from "./ProjectCard.astro";
                 const dateB = new Date(b.data.date);
                 return dateB.getTime() - dateA.getTime();
             })
+            .slice(0, amountDisplayed ?? projects.length)
             .map((project: ProjectEntry) => (
                     <ProjectCard title={project.data.title} description={project.data.description}
                                  date={project.data.date} slug={project.slug}/>))
