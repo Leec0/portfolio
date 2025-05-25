@@ -5,6 +5,7 @@ import GitHub from "../icons/GitHub.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
 import Curve from "./Curve.astro";
 import Instagram from "../icons/Instagram.astro";
+import Socials from "./Socials.astro";
 ---
 <section class="bg-slate-900 text-white relative mt-12">
     <Curve type="Bottom"/>
@@ -13,15 +14,7 @@ import Instagram from "../icons/Instagram.astro";
             <p class="text-center md:text-start col-auto">© {getCurrentYear()} leeco.dev</p>
             <Brand/>
             <section class="col-auto flex flex-row justify-center md:justify-end items-center gap-4">
-                <a href="https://github.com/leec0" target="_blank">
-                    <GitHub />
-                </a>
-                <a href="https://linkedin.com/in/lee-coppens-a52541120/" target="_blank">
-                    <LinkedIn/>
-                </a>
-                <a href="https://instagram.com/lee_coppens" target="_blank">
-                    <Instagram/>
-                </a>
+                <Socials/>
             </section>
         </section>
     </section>

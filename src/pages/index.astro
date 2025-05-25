@@ -7,6 +7,9 @@ import AnimatedSplitChars from "../components/pageElements/AnimatedSplitChars.vu
 import AnimatedSplitWords from "../components/pageElements/AnimatedSplitWords.vue";
 import Image from "astro/components/Image.astro";
 import Button from "../components/pageElements/Button.astro";
+import Card from "../components/pageElements/Card.astro";
+import Mail from "../components/icons/Mail.astro";
+import Socials from "../components/pageElements/Socials.astro";
 ---
 <Layout pageTitle="leeco.dev">
     <Hero slot="hero" height="700px">
@@ -25,11 +28,37 @@ import Button from "../components/pageElements/Button.astro";
             <Image src={steveImage} alt="steve" loading="eager" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
     </Hero>
-    <section class="flex flex-col gap-4">
-        <section class="text-center">
-            <h2 class="text-3xl font-bold">My Projects</h2>
-            <p class="text-lg">A collection of project I've worked on.</p>
+    <section class="flex flex-col gap-18">
+        <section class="flex flex-col gap-6">
+            <section class="text-center">
+                <h2 class="text-3xl font-bold">My Projects</h2>
+                <p class="text-lg">A collection of project I've worked on.</p>
+            </section>
+            <Projects amountDisplayed={4}/>
         </section>
-        <Projects amountDisplayed={4}/>
+        <section class="flex flex-col gap-4">
+            <h2 class="text-3xl font-bold text-center">Get in touch</h2>
+            <section class="flex flex-col md:grid md:grid-cols-2 gap-6">
+                <Card>
+                    <section class="flex flex-col gap-2">
+                        <p class="text-lg font-semibold">Contact me</p>
+                        <Button>
+                            <section class="flex flex-row gap-4 items-center">
+                                <Mail/>
+                                Click here to reach out.
+                            </section>
+                        </Button>
+                    </section>
+                </Card>
+                <Card>
+                    <section class="flex flex-col gap-2">
+                        <p class="text-lg font-semibold">Find me at</p>
+                        <section class="flex flex-row gap-3">
+                            <Socials/>
+                        </section>
+                    </section>
+                </Card>
+            </section>
+        </section>
     </section>
 </Layout>
