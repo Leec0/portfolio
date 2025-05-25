@@ -5,8 +5,8 @@ import steveImage from "../assets/steve.png"
 import Projects from "../components/projects/Projects.astro";
 import Button from "../components/pageElements/Button.astro";
 import Card from "../components/pageElements/Card.astro";
-import Mail from "../components/icons/Mail.astro";
 import Socials from "../components/pageElements/Socials.astro";
+import {Icon} from "astro-icon/components";
 ---
 <Layout pageTitle="Home leeco.dev">
     <Hero slot="hero" height="700px">
@@ -35,7 +35,7 @@ import Socials from "../components/pageElements/Socials.astro";
                         <p class="text-lg font-semibold">Contact me</p>
                         <Button>
                             <section class="flex flex-row gap-4 items-center">
-                                <Mail/>
+                                <Icon name="envelope" class="size-6"/>
                                 Click here to reach out.
                             </section>
                         </Button>

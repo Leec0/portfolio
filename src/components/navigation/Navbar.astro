@@ -1,7 +1,7 @@
 ---
 import Brand from "../pageElements/Brand.astro";
 import Button from "../pageElements/Button.astro";
-import MenuBars from "../icons/MenuBars.astro";
+import {Icon} from 'astro-icon/components'
 
 const {pathname} = Astro.url
 const FirstSegment = '/' + pathname.split("/")[1] || '';
@@ -19,16 +19,18 @@ const navLinks = [
     </section>
     <Button classes="lg:hidden col-start-2" theme="inactive" size="sm" id="menu-toggle">
         <section class="flex flex-row gap-2 items-center justify-center">
-            <MenuBars /> Toggle menu
+            <Icon name="burger-menu" class="size-4"/>
+            Toggle menu
         </section>
     </Button>
-    <section id="menu" class="hidden col-start-1 col-span-2 lg:flex lg:flex-row justify-end items-center gap-2 lg:gap-4">
+    <section id="menu"
+             class="hidden col-start-1 col-span-2 lg:flex lg:flex-row justify-end items-center gap-2 lg:gap-4">
         {navLinks.map(link => (
                 <Button href={link.href} theme={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</Button>
         ))}
     </section>
 
-    <script type="module" is:inline >
+    <script type="module" is:inline>
         const toggle = document.getElementById("menu-toggle")
         const menu = document.getElementById("menu")
 
