@@ -5,7 +5,6 @@ import steveImage from "../assets/steve.png"
 import Projects from "../components/projects/Projects.astro";
 import AnimatedSplitChars from "../components/pageElements/AnimatedSplitChars.vue";
 import AnimatedSplitWords from "../components/pageElements/AnimatedSplitWords.vue";
-import Image from "astro/components/Image.astro";
 import Button from "../components/pageElements/Button.astro";
 import Card from "../components/pageElements/Card.astro";
 import Mail from "../components/icons/Mail.astro";
@@ -25,7 +24,7 @@ import Socials from "../components/pageElements/Socials.astro";
                 </AnimatedSplitWords>
                 <Button classes="w-3xs" size="lg" theme="secondary" href="/about-me">Get to know me!</Button>
             </article>
-            <Image src={steveImage} alt="steve" loading="eager" class="hidden md:block col-start-5 col-span-2 w-full"/>
+            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
     </Hero>
     <section class="flex flex-col gap-18">
