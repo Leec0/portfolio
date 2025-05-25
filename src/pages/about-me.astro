@@ -1,19 +1,12 @@
 ---
+import {Icon} from 'astro-icon/components'
 import Hero from "../components/pageElements/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import NumberCard from "../components/pageElements/NumberCard.astro";
 import {getYearsPassed} from "../lib/calcYearsPassed";
 import Link from "../components/pageElements/Link.astro";
 import Card from "../components/pageElements/Card.astro";
-import People from "../components/icons/People.astro";
-import Eye from "../components/icons/Eye.astro";
-import ChatBubble from "../components/icons/ChatBubble.astro";
-import Puzzle from "../components/icons/Puzzle.astro";
-import Fire from "../components/icons/Fire.astro";
-import Gear from "../components/icons/Gear.astro";
-import Code from "../components/icons/Code.astro";
 import Button from "../components/pageElements/Button.astro";
-import Mail from "../components/icons/Mail.astro";
 import Projects from "../components/projects/Projects.astro";
 ---
 <Layout pageTitle="About Me">
@@ -53,7 +46,7 @@ import Projects from "../components/projects/Projects.astro";
             <section class="flex flex-col md:grid md:grid-cols-2 gap-4 justify-between items-center">
                 <Card fullWidth fullHeight>
                     <section class="flex flex-col gap-2">
-                        <People/>
+                        <Icon name="people" class="size-10 text-orange-500"/>
                         <h1 class="font-bold text-xl">Teamwork</h1>
                         <p>I'm used to working in teams—from real-world collaboration in Scouts to coding together on
                             Git-based school projects. I’ve learned to listen, divide tasks efficiently, and keep
@@ -62,7 +55,7 @@ import Projects from "../components/projects/Projects.astro";
                 </Card>
                 <Card fullWidth fullHeight>
                     <section class="flex flex-col gap-2">
-                        <Puzzle/>
+                        <Icon name="puzzle" class="size-10 text-purple-500"/>
                         <h1 class="font-bold text-xl">Problem solving</h1>
                         <p>Whether it's fixing bugs in code or finding creative ways to build a game mechanic, I enjoy
                             breaking down complex problems and figuring things out step by step. Scouting has also
@@ -71,7 +64,7 @@ import Projects from "../components/projects/Projects.astro";
                 </Card>
                 <Card fullWidth fullHeight>
                     <section class="flex flex-col gap-2">
-                        <Eye/>
+                        <Icon name="eye" class="size-10 text-emerald-500"/>
                         <h1 class="font-bold text-xl">Attention to detail</h1>
                         <p>From writing clean code to designing intuitive interfaces, I focus on the small things that
                             make a project feel polished. I enjoy refining my work until it not only works well but also
@@ -80,7 +73,7 @@ import Projects from "../components/projects/Projects.astro";
                 </Card>
                 <Card fullWidth fullHeight>
                     <section class="flex flex-col gap-2">
-                        <ChatBubble/>
+                        <Icon name="chat-bubble" class="size-10 text-blue-500"/>
                         <h1 class="font-bold text-xl">Communication</h1>
                         <p>I’ve learned to communicate clearly both in-person through Scouting and online when working
                             on school projects. Whether it's explaining my thought process in a Git commit or talking
@@ -95,7 +88,7 @@ import Projects from "../components/projects/Projects.astro";
             <section class="flex flex-col md:grid md:grid-cols-3 gap-4 justify-between items-center">
                 <Card fullWidth fullHeight>
                     <section class="flex flex-row gap-8 items-center h-full">
-                        <Fire/>
+                        <Icon name="fire" class="size-10 text-red-500"/>
                         <section class="flex flex-col gap-2">
                             <h3 class="font-semibold">Scouting Leader</h3>
                             <p>Organizing weekend activities and other events.</p>
@@ -104,7 +97,7 @@ import Projects from "../components/projects/Projects.astro";
                 </Card>
                 <Card fullWidth fullHeight>
                     <section class="flex flex-row gap-8 items-center h-full">
-                        <Gear/>
+                        <Icon name="gear" class="size-10 text-zinc-700"/>
                         <section class="flex flex-col gap-2">
                             <h3 class="font-semibold">Tech Tinkerer</h3>
                             <p>Trying out new tools, building utilities for fun.</p>
@@ -113,10 +106,10 @@ import Projects from "../components/projects/Projects.astro";
                 </Card>
                 <Card fullWidth fullHeight>
                     <section class="flex flex-row gap-8 items-center h-full">
-                        <Code/>
+                        <Icon name="music" class="size-10 text-lime-500"/>
                         <section class="flex flex-col gap-2">
-                            <h3 class="font-semibold">Game Dev Hobbyist</h3>
-                            <p>Building small games and exploring mechanics.</p>
+                            <h3 class="font-semibold">DJ</h3>
+                            <p>Mixing music in my free time to relax and explore creativity.</p>
                         </section>
                     </section>
                 </Card>
@@ -126,7 +119,7 @@ import Projects from "../components/projects/Projects.astro";
         <article class="flex flex-col gap-2">
             <h2 class="text-2xl font-bold">Some of my projects</h2>
             <p>Take a look of some of the projects that i build.</p>
-            <Projects amountDisplayed={2} />
+            <Projects amountDisplayed={2}/>
         </article>
         <hr/>
         <article class="flex flex-col gap-2 text-center items-center">
@@ -134,7 +127,8 @@ import Projects from "../components/projects/Projects.astro";
             <p>If you're interested in collaborating, hiring, or just chatting about tech, feel free to reach out.</p>
             <Button theme="primary" size="lg" href="/contact">
                 <section class="flex flex-row gap-4 items-center">
-                    <Mail /> Contact Me!
+                    <Icon name="envelope" class="size-6"/>
+                    Contact Me!
                 </section>
             </Button>
         </article>
