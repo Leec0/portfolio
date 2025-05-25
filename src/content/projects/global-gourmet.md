@@ -1,10 +1,10 @@
 ---
-title: Global Gourmets
+title: Global Gourmet
 description: A collaborative website project developed as part of the Communications 2 course at KdG Hogeschool.
 slug: global-gourmets
 date: 20 Dec 2024
 ---
-**Global Gourmets** is a collaborative web project developed by a team of four students, including myself, during our second year at [KdG University of Applied Sciences and Arts](https://www.kdg.be/en). This project was part of the **Communications 2** course, aiming to create a dynamic platform that explores global cuisines and cultural food stories.
+**Global Gourmet** is a collaborative web project developed by a team of four students, including myself, during our second year at [KdG University of Applied Sciences and Arts](https://www.kdg.be/en). This project was part of the **Communications 2** course, aiming to create a dynamic platform that explores global cuisines and cultural food stories.
 
 ### Technologies Used
 
@@ -27,4 +27,4 @@ The website features a collection of articles and blog posts that delve into var
 
 Feel free to explore the site to learn more about our approach to combining technology and storytelling in the context of global cuisines.
 
-![global-gourmets.png](global-gourmets-screenshot.png)
+![global-gourmet.png](global-gourmet-screenshot.png)
