@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import "tailwindcss";
+@import 'animate.css';
 
 @theme {
     --font-rubik: "Rubik", sans-serif;
     --font-permanant: "Permanent Marker", sans-serif;
+}
+
+:root {
+    --animate-delay: 0.3s
 }
 
 .projects-container {
