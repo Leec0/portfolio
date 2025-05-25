@@ -1,6 +1,7 @@
 ---
 import Brand from "../pageElements/Brand.astro";
 import Button from "../pageElements/Button.astro";
+import MenuBars from "../icons/MenuBars.astro";
 
 const {pathname} = Astro.url
 const FirstSegment = '/' + pathname.split("/")[1] || '';
@@ -12,11 +13,29 @@ const navLinks = [
     {name: "Contact", href: "/contact"},
 ]
 ---
-<nav class="sticky top-0 z-50 bg-stone-100 text-slate-950 flex flex-col lg:flex-row gap-4 justify-between items-center px-4 lg:px-24 py-2">
-    <Brand/>
-    <section class="flex flex-col lg:flex-row justify-end items-center gap-2 md:gap-4">
+<nav class="sticky top-0 z-50 bg-stone-100 text-slate-950 grid grid-cols-2 lg:flex lg:flex-row gap-4 justify-between items-center px-4 lg:px-24 py-2">
+    <section class="col-start-1">
+        <Brand/>
+    </section>
+    <Button classes="lg:hidden col-start-2" theme="inactive" size="sm" id="menu-toggle">
+        <section class="flex flex-row gap-2 items-center justify-center">
+            <MenuBars /> Toggle menu
+        </section>
+    </Button>
+    <section id="menu" class="hidden col-start-1 col-span-2 lg:flex lg:flex-row justify-end items-center gap-2 lg:gap-4">
         {navLinks.map(link => (
                 <Button href={link.href} theme={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</Button>
         ))}
     </section>
+
+    <script type="module" is:inline >
+        const toggle = document.getElementById("menu-toggle")
+        const menu = document.getElementById("menu")
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
+            menu.classList.toggle("flex-col");
+        })
+    </script>
 </nav>
