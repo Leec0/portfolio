@@ -18,7 +18,7 @@ const {project} = Astro.props;
 const typeProject = project as ProjectEntry;
 const {Content} = await render(project);
 ---
-<Layout>
+<Layout pageTitle={typeProject.data.title}>
     <Hero slot="hero">
         <section class="flex flex-col gap-2 text-center">
             <h1 class="text-4xl font-bold">{typeProject.data.title}</h1>
