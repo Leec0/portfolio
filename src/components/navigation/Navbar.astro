@@ -9,11 +9,12 @@ const navLinks = [
     {name: "Home", href: "/"},
     {name: "About Me", href: "/about-me"},
     {name: "Projects", href: "/projects"},
+    {name: "Contact", href: "/contact"},
 ]
 ---
-<nav class="sticky top-0 z-50 bg-stone-100 text-slate-950 flex flex-col md:flex-row gap-4 justify-between items-center px-4 md:px-24 py-2">
+<nav class="sticky top-0 z-50 bg-stone-100 text-slate-950 flex flex-col lg:flex-row gap-4 justify-between items-center px-4 lg:px-24 py-2">
     <Brand/>
-    <section class="flex flex-col md:flex-row justify-end items-center gap-2 md:gap-4">
+    <section class="flex flex-col lg:flex-row justify-end items-center gap-2 md:gap-4">
         {navLinks.map(link => (
                 <Button href={link.href} theme={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</Button>
         ))}
