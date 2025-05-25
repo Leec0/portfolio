@@ -1,0 +1,16 @@
+---
+interface Props {
+    fullWidth?: boolean,
+    fullHeight?: boolean,
+}
+
+const {fullWidth = false, fullHeight=false} = Astro.props
+
+const baseClass = "bg-slate-300/70 backdrop-blur-md border border-slate-300/20 shadow-md hover:shadow-xl transition-shadow p-4 rounded-md"
+const fullWClass = fullWidth ? 'w-full' : ''
+const fullHClass = fullHeight ? 'h-full' : ''
+const classes = `${baseClass} ${fullWClass} ${fullHClass}`
+---
+<section class={classes}>
+    <slot/>
+</section>

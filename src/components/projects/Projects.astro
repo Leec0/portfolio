@@ -4,8 +4,15 @@ type ProjectEntry = CollectionEntry<'projects'>;
 
 const projects = await getCollection("projects");
 import ProjectCard from "./ProjectCard.astro";
+import Button from "../pageElements/Button.astro";
+
+interface Props {
+    amountDisplayed?: number;
+}
+
+const {amountDisplayed} = Astro.props;
 ---
-<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-2">
     {
         projects
             .sort((a: ProjectEntry, b: ProjectEntry) => {
@@ -13,8 +20,12 @@ import ProjectCard from "./ProjectCard.astro";
                 const dateB = new Date(b.data.date);
                 return dateB.getTime() - dateA.getTime();
             })
+            .slice(0, amountDisplayed ?? projects.length)
             .map((project: ProjectEntry) => (
                     <ProjectCard title={project.data.title} description={project.data.description}
                                  date={project.data.date} slug={project.slug}/>))
     }
 </section>
+{amountDisplayed && projects.length > amountDisplayed && (
+<Button href="/projects" size="lg" theme="primary">Click here to view more projects!</Button>
+    )}

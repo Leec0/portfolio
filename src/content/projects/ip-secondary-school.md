@@ -17,8 +17,6 @@ We learned a lot by doing, experimenting, and troubleshooting — with no formal
 ### Tech Stack
 - **Arduino Uno**
 - **CNC Shield**
-- **Stepper Motors**
-- **Custom 2D frame + spray can mount**
 - **C++ codebase for movement logic**
 
 ---

@@ -3,26 +3,53 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/pageElements/Hero.astro";
 import steveImage from "../assets/steve.png"
 import Projects from "../components/projects/Projects.astro";
-
+import Button from "../components/pageElements/Button.astro";
+import Card from "../components/pageElements/Card.astro";
+import Mail from "../components/icons/Mail.astro";
+import Socials from "../components/pageElements/Socials.astro";
 ---
-<Layout pageTitle="leeco.dev">
+<Layout pageTitle="Home leeco.dev">
     <Hero slot="hero" height="700px">
         <section class="grid grid-cols-6 items-center mx-auto max-w-5xl w-full">
             <article class="col-start-1 col-span-6 md:col-span-3 flex flex-col gap-4">
-                <h1 class="font-bold text-7xl tracking-in-expand">Welcome.</h1>
-                <p class="tracking-in-expand text-base">My name is Lee, a student applied computer science @ Karel de
-                    Groote Antwerpen based in Kruibeke,
-                    Belgium. I love making games and tinkering with websites or just with technology in general.
-                    Currently I'm the webmaster of Scouts Rupelmonde.</p>
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold animate__animated animate__jackInTheBox">Welcome.</h1>
+                <p class="text-base animate__animated animate__zoomInLeft animate__delay-1s">My name is Lee Coppens, a student applied computer science at Karel de Groote Antwerpen based in Kruibeke, Belgium. I love making games and tinkering with websites or just with technology in general. Currently I'm the webmaster of Scouts Rupelmonde.</p>
+                <Button classes="w-3xs" size="lg" theme="secondary" href="/about-me">Get to know me!</Button>
             </article>
             <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
     </Hero>
-    <section>
-        <section class="text-center my-4">
-            <h2 class="text-3xl font-bold">My Projects</h2>
-            <p class="text-lg">A collection of project I've worked on.</p>
+    <section class="flex flex-col gap-18">
+        <section class="flex flex-col gap-6">
+            <section class="text-center">
+                <h2 class="text-3xl font-bold">My Projects</h2>
+                <p class="text-lg">A collection of project I've worked on.</p>
+            </section>
+            <Projects amountDisplayed={4}/>
         </section>
-        <Projects/>
+        <section class="flex flex-col gap-4">
+            <h2 class="text-3xl font-bold text-center">Get in touch</h2>
+            <section class="flex flex-col md:grid md:grid-cols-2 gap-6">
+                <Card>
+                    <section class="flex flex-col gap-2">
+                        <p class="text-lg font-semibold">Contact me</p>
+                        <Button>
+                            <section class="flex flex-row gap-4 items-center">
+                                <Mail/>
+                                Click here to reach out.
+                            </section>
+                        </Button>
+                    </section>
+                </Card>
+                <Card>
+                    <section class="flex flex-col gap-2">
+                        <p class="text-lg font-semibold">Find me at</p>
+                        <section class="flex flex-row gap-3">
+                            <Socials/>
+                        </section>
+                    </section>
+                </Card>
+            </section>
+        </section>
     </section>
 </Layout>

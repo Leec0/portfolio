@@ -1,0 +1,18 @@
+---
+interface Props {
+    type: "Top" | "Bottom"
+}
+
+const {type = "Top"} = Astro.props
+
+const classes = {
+    Top: "overflow-hidden leading-none",
+    Bottom: "overflow-hidden leading-none rotate-180",
+}[type]
+---
+<section class={classes}>
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="w-full h-[110px]">
+        <path d="M-9.31,82.39 C149.99,150.00 271.95,0.00 510.00,98.26 L500.00,150.00 L0.00,150.00 Z"
+              class="fill-stone-100"></path>
+    </svg>
+</section>

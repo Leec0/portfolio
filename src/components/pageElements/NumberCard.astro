@@ -1,0 +1,12 @@
+---
+import NumberCounter from "./NumberCounter.vue"
+import Card from "./Card.astro";
+
+const {text, number} = Astro.props
+---
+<Card fullWidth>
+    <section class="flex flex-col gap-1 p-4">
+        <NumberCounter classes="text-2xl font-semibold" endValue={number} duration={1500} client:visible/>
+        <p class="text-xl">{text}</p>
+    </section>
+</Card>

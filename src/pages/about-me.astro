@@ -1,0 +1,142 @@
+---
+import Hero from "../components/pageElements/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import NumberCard from "../components/pageElements/NumberCard.astro";
+import {getYearsPassed} from "../lib/calcYearsPassed";
+import Link from "../components/pageElements/Link.astro";
+import Card from "../components/pageElements/Card.astro";
+import People from "../components/icons/People.astro";
+import Eye from "../components/icons/Eye.astro";
+import ChatBubble from "../components/icons/ChatBubble.astro";
+import Puzzle from "../components/icons/Puzzle.astro";
+import Fire from "../components/icons/Fire.astro";
+import Gear from "../components/icons/Gear.astro";
+import Code from "../components/icons/Code.astro";
+import Button from "../components/pageElements/Button.astro";
+import Mail from "../components/icons/Mail.astro";
+import Projects from "../components/projects/Projects.astro";
+---
+<Layout pageTitle="About Me">
+    <Hero slot="hero">
+        <section class="flex flex-col gap-2 text-center">
+            <h1 class="text-4xl font-bold">About Me</h1>
+            <p class="text-lg">Student developer in the week, scouting in the weekend.</p>
+        </section>
+    </Hero>
+    <section class="flex flex-col gap-4">
+        <Link href="/">← Go back</Link>
+        <article class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-4 justify-between items-center">
+            <NumberCard text="Years old" number={getYearsPassed(new Date('2005-02-15'))}/>
+            <NumberCard text="Years scouting" number={getYearsPassed(new Date('2018-09-01'))}/>
+            <NumberCard text="Graduation year" number={2026}/>
+        </article>
+        <hr/>
+        <article class="flex flex-col gap-2">
+            <h2 class="text-2xl font-bold">What I bring to the table</h2>
+            <section
+                    class="bg-zinc-900 text-green-400 font-mono text-sm rounded-lg p-4 leading-relaxed max-w-full overflow-auto">
+                <p><span class="text-white">$</span> devstack --list</p>
+                <p>✓ C#, .NET</p>
+                <p>✓ Java, Javafx</p>
+                <p>✓ HTML, CSS</p>
+                <p>✓ Javascript & Typescript</p>
+                <p>✓ tailwindcss</p>
+                <p>✓ Astro & vue.js</p>
+                <p>✓ Cisco & Ubiquiti</p>
+                <p>✓ Postgres & Oracle</p>
+                <p>✓ Docker</p>
+            </section>
+        </article>
+        <hr/>
+        <article class="flex flex-col gap-2">
+            <h2 class="text-2xl font-bold">My strong suit</h2>
+            <section class="flex flex-col md:grid md:grid-cols-2 gap-4 justify-between items-center">
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-col gap-2">
+                        <People/>
+                        <h1 class="font-bold text-xl">Teamwork</h1>
+                        <p>I'm used to working in teams—from real-world collaboration in Scouts to coding together on
+                            Git-based school projects. I’ve learned to listen, divide tasks efficiently, and keep
+                            everyone on the same page to reach a shared goal.</p>
+                    </section>
+                </Card>
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-col gap-2">
+                        <Puzzle/>
+                        <h1 class="font-bold text-xl">Problem solving</h1>
+                        <p>Whether it's fixing bugs in code or finding creative ways to build a game mechanic, I enjoy
+                            breaking down complex problems and figuring things out step by step. Scouting has also
+                            trained me to stay calm and think on my feet when plans change.</p>
+                    </section>
+                </Card>
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-col gap-2">
+                        <Eye/>
+                        <h1 class="font-bold text-xl">Attention to detail</h1>
+                        <p>From writing clean code to designing intuitive interfaces, I focus on the small things that
+                            make a project feel polished. I enjoy refining my work until it not only works well but also
+                            looks and feels right.</p>
+                    </section>
+                </Card>
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-col gap-2">
+                        <ChatBubble/>
+                        <h1 class="font-bold text-xl">Communication</h1>
+                        <p>I’ve learned to communicate clearly both in-person through Scouting and online when working
+                            on school projects. Whether it's explaining my thought process in a Git commit or talking
+                            through a problem with teammates, I value being open and clear.</p>
+                    </section>
+                </Card>
+            </section>
+        </article>
+        <hr/>
+        <article class="flex flex-col gap-2">
+            <h2 class="text-2xl font-bold">Outside of Code</h2>
+            <section class="flex flex-col md:grid md:grid-cols-3 gap-4 justify-between items-center">
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-row gap-8 items-center h-full">
+                        <Fire/>
+                        <section class="flex flex-col gap-2">
+                            <h3 class="font-semibold">Scouting Leader</h3>
+                            <p>Organizing weekend activities and other events.</p>
+                        </section>
+                    </section>
+                </Card>
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-row gap-8 items-center h-full">
+                        <Gear/>
+                        <section class="flex flex-col gap-2">
+                            <h3 class="font-semibold">Tech Tinkerer</h3>
+                            <p>Trying out new tools, building utilities for fun.</p>
+                        </section>
+                    </section>
+                </Card>
+                <Card fullWidth fullHeight>
+                    <section class="flex flex-row gap-8 items-center h-full">
+                        <Code/>
+                        <section class="flex flex-col gap-2">
+                            <h3 class="font-semibold">Game Dev Hobbyist</h3>
+                            <p>Building small games and exploring mechanics.</p>
+                        </section>
+                    </section>
+                </Card>
+            </section>
+        </article>
+        <hr/>
+        <article class="flex flex-col gap-2">
+            <h2 class="text-2xl font-bold">Some of my projects</h2>
+            <p>Take a look of some of the projects that i build.</p>
+            <Projects amountDisplayed={2} />
+        </article>
+        <hr/>
+        <article class="flex flex-col gap-2 text-center items-center">
+            <h2 class="text-2xl font-bold">Let's build something cool together!</h2>
+            <p>If you're interested in collaborating, hiring, or just chatting about tech, feel free to reach out.</p>
+            <Button theme="primary" size="lg" href="/contact">
+                <section class="flex flex-row gap-4 items-center">
+                    <Mail /> Contact Me!
+                </section>
+            </Button>
+        </article>
+    </section>
+</Layout>
