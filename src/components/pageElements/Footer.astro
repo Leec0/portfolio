@@ -8,7 +8,10 @@ import Socials from "./Socials.astro";
     <Curve type="Bottom"/>
     <section class="px-4 py-8">
         <section class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 items-center mx-auto max-w-5xl">
-            <p class="text-center md:text-start col-auto">© {getCurrentYear()} leeco.dev</p>
+            <section class="col-auto flex flex-col justify-center md:justify-start text-center md:text-start">
+                <p>© {getCurrentYear()} leeco.dev</p>
+                <a class="underline" href="mailto:contant@leeco.dev">contact@leeco.dev</a>
+            </section>
             <Brand/>
             <section class="col-auto flex flex-row justify-center md:justify-end items-center gap-4">
                 <Socials/>

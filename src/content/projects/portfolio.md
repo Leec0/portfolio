@@ -10,6 +10,7 @@ This site showcases the projects I’ve worked on and the tools I enjoy using. I
 
 - **[Astro](https://astro.build/)** – for fast and flexible static site generation
 - **[Tailwind CSS](https://tailwindcss.com/)** – for a utility-first approach to styling
+- **[Vue.js](https://vuejs.org/)** – used in various components for interactivity and dynamic behavior  
 - **[Cloudflare Pages](https://pages.cloudflare.com/)** – for global, high-performance hosting
 
 I use this space to document and share my work, highlight web development skills, and provide context around each project — from technical choices to design decisions.
