@@ -7,6 +7,7 @@ import Button from "../components/pageElements/Button.astro";
 import Card from "../components/pageElements/Card.astro";
 import Socials from "../components/pageElements/Socials.astro";
 import {Icon} from "astro-icon/components";
+import {Image} from 'astro:assets';
 ---
 <Layout pageTitle="Home leeco.dev">
     <Hero slot="hero" height="700px">
@@ -16,7 +17,7 @@ import {Icon} from "astro-icon/components";
                 <p class="text-base animate__animated animate__zoomInLeft animate__delay-1s">My name is Lee Coppens, a student applied computer science at Karel de Groote Antwerpen based in Kruibeke, Belgium. I love making games and tinkering with websites or just with technology in general. Currently I'm the webmaster of Scouts Rupelmonde.</p>
                 <Button classes="w-3xs" size="lg" theme="secondary" href="/about-me">Get to know me!</Button>
             </article>
-            <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
+            <Image src={steveImage} alt="Steve" loading={"eager"} class="hidden md:block col-start-5 col-span-2 w-full" />
         </section>
     </Hero>
     <section class="flex flex-col gap-18">
@@ -33,7 +34,7 @@ import {Icon} from "astro-icon/components";
                 <Card>
                     <section class="flex flex-col gap-2">
                         <p class="text-lg font-semibold">Contact me</p>
-                        <Button>
+                        <Button href="/contact">
                             <section class="flex flex-row gap-4 items-center">
                                 <Icon name="envelope" class="size-6"/>
                                 Click here to reach out.
