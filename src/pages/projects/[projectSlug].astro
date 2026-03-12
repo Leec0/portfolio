@@ -21,13 +21,13 @@ const {Content} = await render(project);
 <Layout pageTitle={typeProject.data.title}>
     <Hero slot="hero">
         <section class="flex flex-col gap-2 text-center">
-            <h1 class="text-4xl font-bold">{typeProject.data.title}</h1>
-            <p class="text-lg">{typeProject.data.date}</p>
+            <h1 class="font-heading text-4xl text-kiwi">{typeProject.data.title}</h1>
+            <p class="text-lg text-text-muted">{typeProject.data.date}</p>
         </section>
     </Hero>
     <section class="flex flex-row justify-between items-center mb-6">
         <Link href="/projects">← Go back</Link>
-        <p class="font-semibold">{getReadTime(typeProject.body)} Minute read</p>
+        <p class="font-semibold text-text-muted">{getReadTime(typeProject.body)} Minute read</p>
     </section>
     <article class="projects-container">
         <Content/>

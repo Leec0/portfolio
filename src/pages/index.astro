@@ -12,9 +12,9 @@ import {Icon} from "astro-icon/components";
     <Hero slot="hero" height="700px">
         <section class="grid grid-cols-6 items-center mx-auto max-w-5xl w-full">
             <article class="col-start-1 col-span-6 md:col-span-3 flex flex-col gap-4">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold animate__animated animate__jackInTheBox">Welcome.</h1>
-                <p class="text-base animate__animated animate__zoomInLeft animate__delay-1s">My name is Lee Coppens, a student applied computer science at Karel de Groote Antwerpen based in Kruibeke, Belgium. I love making games and tinkering with websites or just with technology in general. Currently I'm the webmaster of Scouts Rupelmonde.</p>
-                <Button classes="w-3xs" size="lg" theme="secondary" href="/about-me">Get to know me!</Button>
+                <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl text-kiwi animate__animated animate__jackInTheBox">Welcome.</h1>
+                <p class="text-base text-text-muted animate__animated animate__zoomInLeft animate__delay-1s">My name is Lee Coppens, a student applied computer science at Karel de Groote Antwerpen based in Kruibeke, Belgium. I love making games and tinkering with websites or just with technology in general. Currently I'm the webmaster of Scouts Rupelmonde.</p>
+                <Button class="w-3xs" size="lg" variant="default" href="/about-me">Get to know me!</Button>
             </article>
             <img src={steveImage.src} alt="steve" class="hidden md:block col-start-5 col-span-2 w-full"/>
         </section>
@@ -22,17 +22,17 @@ import {Icon} from "astro-icon/components";
     <section class="flex flex-col gap-18">
         <section class="flex flex-col gap-6">
             <section class="text-center">
-                <h2 class="text-3xl font-bold">My Projects</h2>
-                <p class="text-lg">A collection of project I've worked on.</p>
+                <h2 class="font-heading text-3xl text-kiwi">My Projects</h2>
+                <p class="text-lg text-text-muted">A collection of projects I've worked on.</p>
             </section>
             <Projects amountDisplayed={4}/>
         </section>
         <section class="flex flex-col gap-4">
-            <h2 class="text-3xl font-bold text-center">Get in touch</h2>
+            <h2 class="font-heading text-3xl text-kiwi text-center">Get in touch</h2>
             <section class="flex flex-col md:grid md:grid-cols-2 gap-6">
                 <Card>
                     <section class="flex flex-col gap-2">
-                        <p class="text-lg font-semibold">Contact me</p>
+                        <p class="text-lg font-semibold text-text">Contact me</p>
                         <Button>
                             <section class="flex flex-row gap-4 items-center">
                                 <Icon name="envelope" class="size-6"/>
@@ -43,7 +43,7 @@ import {Icon} from "astro-icon/components";
                 </Card>
                 <Card>
                     <section class="flex flex-col gap-2">
-                        <p class="text-lg font-semibold">Find me at</p>
+                        <p class="text-lg font-semibold text-text">Find me at</p>
                         <section class="flex flex-row gap-3">
                             <Socials/>
                         </section>

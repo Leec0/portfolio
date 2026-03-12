@@ -2,8 +2,8 @@
 import Curve from "./Curve.astro";
 const {height = "200px"} = Astro.props
 ---
-<section class="bg-slate-900 text-white relative mb-8">
-    <section class="flex flex-row justify-center items-center px-4" style=`min-height: ${height};`>
+<section class="bg-night-subtle text-text relative mb-8 overflow-hidden">
+    <section class="flex flex-row justify-center items-center px-4 pb-10" style=`min-height: ${height};`>
         <slot/>
     </section>
     <Curve type="Top"/>

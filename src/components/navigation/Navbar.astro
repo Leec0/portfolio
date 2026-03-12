@@ -1,7 +1,5 @@
 ---
 import Brand from "../pageElements/Brand.astro";
-import Button from "../pageElements/Button.astro";
-import {Icon} from 'astro-icon/components'
 
 const {pathname} = Astro.url
 const FirstSegment = '/' + pathname.split("/")[1] || '';
@@ -13,31 +11,129 @@ const navLinks = [
     {name: "Contact", href: "/contact"},
 ]
 ---
-<nav class="sticky top-0 z-50 bg-stone-100 text-slate-950 grid grid-cols-2 lg:flex lg:flex-row gap-4 justify-between items-center px-4 lg:px-24 py-2">
-    <section class="col-start-1">
+<!-- Spacer so fixed navbar doesn't overlap content -->
+<div id="navbar-spacer" class="h-14"></div>
+
+<!--
+  Wrapper is fixed but has NO backdrop-filter itself, so each child
+  (nav + dropdown) can independently blur the page content behind them.
+-->
+<div id="navbar-wrapper" class="navbar-transition fixed top-0 left-0 right-0 z-50 mx-auto" style="max-width: 100%">
+
+    <nav class="glass border border-night-border text-text flex flex-row justify-between items-center px-4 lg:px-24 py-2">
+
         <Brand/>
-    </section>
-    <Button classes="lg:hidden col-start-2" theme="inactive" size="sm" id="menu-toggle">
-        <section class="flex flex-row gap-2 items-center justify-center">
-            <Icon name="burger-menu" class="size-4"/>
-            Toggle menu
+
+        <!-- Animated hamburger (mobile only) -->
+        <button id="menu-toggle"
+                class="lg:hidden flex flex-col gap-1.5 p-2"
+                aria-label="Open menu">
+            <span id="bar-top"    class="w-6 h-0.5 bg-text rounded transition-all duration-300"></span>
+            <span id="bar-mid"    class="w-6 h-0.5 bg-text rounded transition-all duration-300"></span>
+            <span id="bar-bottom" class="w-6 h-0.5 bg-text rounded transition-all duration-300"></span>
+        </button>
+
+        <!-- Desktop links (inside nav, no backdrop-filter needed) -->
+        <section class="hidden lg:flex lg:flex-row lg:gap-1">
+            {navLinks.map(link => (
+                <a href={link.href}
+                   class:list={[
+                       "relative group/link block px-4 py-3 font-medium text-sm transition-colors duration-300 rounded-md",
+                       FirstSegment === link.href ? "text-kiwi" : "text-text hover:text-kiwi"
+                   ]}>
+                    {link.name}
+                    <span class:list={[
+                        "absolute bottom-1.5 left-4 right-4 h-0.5 bg-kiwi transition-transform duration-300 origin-left",
+                        FirstSegment === link.href ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"
+                    ]}></span>
+                </a>
+            ))}
         </section>
-    </Button>
+    </nav>
+
+    <!--
+      Mobile dropdown — sibling to <nav>, NOT a child.
+      This lets backdrop-filter blur the actual page content behind it.
+    -->
     <section id="menu"
-             class="hidden col-start-1 col-span-2 lg:flex lg:flex-row justify-end items-center gap-2 lg:gap-4">
+             class="lg:hidden absolute left-0 right-0 mt-2 mx-4
+                    glass border border-night-border rounded-lg p-3
+                    flex flex-col gap-1
+                    opacity-0 invisible -translate-y-2 pointer-events-none
+                    transition-all duration-200 ease-out">
         {navLinks.map(link => (
-                <Button href={link.href} theme={FirstSegment === link.href ? "active" : "inactive"}>{link.name}</Button>
+            <a href={link.href}
+               class:list={[
+                   "relative group/link block px-4 py-3 font-medium text-sm transition-colors duration-300 rounded-md",
+                   FirstSegment === link.href ? "text-kiwi" : "text-text hover:text-kiwi"
+               ]}>
+                {link.name}
+                <span class:list={[
+                    "absolute bottom-1.5 left-4 right-4 h-0.5 bg-kiwi transition-transform duration-300 origin-left",
+                    FirstSegment === link.href ? "scale-x-100" : "scale-x-0 group-hover/link:scale-x-100"
+                ]}></span>
+            </a>
         ))}
     </section>
 
     <script type="module" is:inline>
-        const toggle = document.getElementById("menu-toggle")
-        const menu = document.getElementById("menu")
+        const toggle  = document.getElementById("menu-toggle")
+        const menu    = document.getElementById("menu")
+        const wrapper = document.getElementById("navbar-wrapper")
+        const spacer  = document.getElementById("navbar-spacer")
+        const barTop  = document.getElementById("bar-top")
+        const barMid  = document.getElementById("bar-mid")
+        const barBot  = document.getElementById("bar-bottom")
+        let isOpen   = false
+        let scrolled = false
 
-        toggle.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            menu.classList.toggle("flex");
-            menu.classList.toggle("flex-col");
+        function openMenu() {
+            isOpen = true
+            toggle.setAttribute("aria-label", "Close menu")
+            barTop.classList.add("rotate-45", "translate-y-2")
+            barMid.classList.add("opacity-0")
+            barBot.classList.add("-rotate-45", "-translate-y-2")
+            menu.classList.remove("opacity-0", "invisible", "-translate-y-2", "pointer-events-none")
+            menu.classList.add("opacity-100", "visible", "translate-y-0", "pointer-events-auto")
+        }
+
+        function closeMenu() {
+            isOpen = false
+            toggle.setAttribute("aria-label", "Open menu")
+            barTop.classList.remove("rotate-45", "translate-y-2")
+            barMid.classList.remove("opacity-0")
+            barBot.classList.remove("-rotate-45", "-translate-y-2")
+            menu.classList.add("opacity-0", "invisible", "-translate-y-2", "pointer-events-none")
+            menu.classList.remove("opacity-100", "visible", "translate-y-0", "pointer-events-auto")
+        }
+
+        toggle.addEventListener("click", () => isOpen ? closeMenu() : openMenu())
+
+        document.addEventListener("click", (e) => {
+            if (isOpen && !wrapper.contains(e.target)) closeMenu()
         })
+
+        // Scroll shrink animation on the wrapper
+        const onScroll = () => {
+            scrolled = window.scrollY > 100
+            if (scrolled) {
+                wrapper.classList.add("left-4", "right-4", "rounded-lg", "mt-4")
+                wrapper.classList.remove("left-0", "right-0")
+                wrapper.style.maxWidth = "85rem"
+                spacer.style.height = "4.5rem"
+                // Match dropdown inset to pill edges
+                menu.classList.remove("mx-4")
+                menu.classList.add("mx-0")
+            } else {
+                wrapper.classList.remove("left-4", "right-4", "rounded-lg", "mt-4")
+                wrapper.classList.add("left-0", "right-0")
+                wrapper.style.maxWidth = "100%"
+                spacer.style.height = "3.5rem"
+                menu.classList.add("mx-4")
+                menu.classList.remove("mx-0")
+            }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true })
     </script>
-</nav>
+</div>
