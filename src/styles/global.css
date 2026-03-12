@@ -1,15 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 @import 'animate.css';
 
+@font-face {
+    font-family: "Bups";
+    src: url("/fonts/Bups.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BigZubo";
+    src: url("/fonts/BigZubo.woff2") format("woff2"),
+         url("/fonts/BigZubo.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Midgame";
+    src: url("/fonts/Midgame.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
-    --font-rubik: "Rubik", sans-serif;
-    --font-permanant: "Permanent Marker", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-heading: "BigZubo", sans-serif;
+    --font-brand: "Bups", sans-serif;
+    --font-midgame: "Midgame", sans-serif;
+
+    --color-night: #222222;
+    --color-night-surface: #2a2a2a;
+    --color-night-border: #383838;
+    --color-night-subtle: #1a1a1a;
+    --color-kiwi: #89E900;
+    --color-kiwi-dim: #6ab800;
+    --color-text: #e8e8e8;
+    --color-text-muted: #9a9a9a;
 }
 
 :root {
-    --animate-delay: 0.3s
+    --animate-delay: 0.3s;
+}
+
+@layer components {
+    .navbar-transition {
+        transition:
+            max-width 800ms cubic-bezier(0.4, 0, 0.2, 1),
+            padding 300ms ease-in-out,
+            border-radius 300ms ease-in-out,
+            box-shadow 300ms ease-in-out,
+            margin-top 300ms ease-in-out,
+            left 300ms ease-in-out,
+            right 300ms ease-in-out;
+    }
 }
 
 .projects-container {
@@ -17,11 +65,13 @@
 }
 
 .projects-container h2 {
-    @apply font-bold text-2xl;
+    font-family: var(--font-heading);
+    @apply font-bold text-2xl text-kiwi;
 }
 
 .projects-container h3 {
-    @apply font-semibold text-xl;
+    font-family: var(--font-heading);
+    @apply font-semibold text-xl text-kiwi;
 }
 
 .projects-container h4, h5, h6 {
@@ -29,7 +79,7 @@
 }
 
 .projects-container a {
-    @apply underline text-slate-700 hover:text-slate-800 transition;
+    @apply underline decoration-kiwi hover:decoration-kiwi-dim text-text hover:text-kiwi transition-colors duration-200 underline-offset-4;
 }
 
 .projects-container ul {
@@ -44,6 +94,7 @@
 
 .projects-container li::before {
     content: '-';
+    color: var(--color-kiwi);
 }
 
 .projects-container img {

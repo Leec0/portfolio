@@ -1,16 +1,21 @@
 ---
+import { twMerge } from "tailwind-merge";
+
 interface Props {
-    fullWidth?: boolean,
-    fullHeight?: boolean,
+    fullWidth?: boolean;
+    fullHeight?: boolean;
+    class?: string;
 }
 
-const {fullWidth = false, fullHeight=false} = Astro.props
+const { fullWidth = false, fullHeight = false, class: className } = Astro.props
 
-const baseClass = "bg-slate-300/70 backdrop-blur-md border border-slate-300/20 shadow-md hover:shadow-xl transition-shadow p-4 rounded-md"
-const fullWClass = fullWidth ? 'w-full' : ''
-const fullHClass = fullHeight ? 'h-full' : ''
-const classes = `${baseClass} ${fullWClass} ${fullHClass}`
+const classes = twMerge(
+    "flex flex-col bg-night-surface text-text border border-night-border rounded-xl p-4 transition-colors duration-200 hover:border-kiwi/30",
+    fullWidth  ? "w-full"  : "",
+    fullHeight ? "h-full"  : "",
+    className
+)
 ---
-<section class={classes}>
+<div class={classes}>
     <slot/>
-</section>
+</div>

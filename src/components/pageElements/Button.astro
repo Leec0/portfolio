@@ -1,53 +1,56 @@
 ---
 import type {HTMLAttributes} from "astro/types";
+import { cva } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+
 interface Props extends HTMLAttributes<"button"> {
     type?: "button" | "submit";
-    size?: "sm" | "md" | "lg";
-    theme?: "primary" | "secondary" | "inactive" | "active";
-    textAlign?: "left" | "center" | "right";
-    classes?: string;
+    size?: "sm" | "default" | "lg" | "icon";
+    variant?: "default" | "outline" | "secondary" | "ghost" | "link" | "inactive" | "active";
+    class?: string;
     href?: string;
 }
 
 const {
     type = "button",
-    size = "md",
-    theme = "primary",
-    textAlign = "center",
-    classes,
+    size = "default",
+    variant = "default",
+    class: className,
     href,
     ...rest
 } = Astro.props
 
-const sizeClasses = {
-    sm: "text-sm px-5 py-2",
-    md: "text-md px-5 py-2",
-    lg: "text-lg px-5 py-2"
-}[size]
+const buttonVariants = cva(
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-kiwi/50 focus-visible:ring-offset-2 focus-visible:ring-offset-night cursor-pointer",
+    {
+        variants: {
+            variant: {
+                default:   "bg-kiwi text-night hover:bg-kiwi-dim hover:shadow-md active:scale-95",
+                outline:   "border-2 border-kiwi bg-transparent text-kiwi hover:bg-kiwi/10 active:scale-95",
+                secondary: "bg-night-surface text-text border border-night-border hover:border-kiwi/60 hover:text-kiwi active:scale-95",
+                ghost:     "text-text hover:bg-kiwi/10 hover:text-kiwi active:scale-95",
+                link:      "text-kiwi underline-offset-4 hover:underline",
+                inactive:  "border border-night-border text-text-muted hover:border-kiwi hover:text-kiwi active:scale-95",
+                active:    "bg-kiwi text-night hover:bg-kiwi-dim active:scale-95",
+            },
+            size: {
+                sm:      "h-9 px-3 py-1.5 text-xs",
+                default: "h-10 px-5 py-2.5",
+                lg:      "h-11 px-7 py-2.5 text-base",
+                icon:    "size-10",
+            },
+        },
+        defaultVariants: {
+            variant: "default",
+            size: "default",
+        },
+    }
+)
 
-const themeClasses = {
-    primary: "bg-slate-700 hover:bg-slate-800 shadow-md hover:shadow-lg text-white",
-    secondary: "bg-slate-400 hover:bg-slate-500 shadow-md hover:shadow-lg text-white",
-    inactive: "border border-slate-700 text-slate-700 hover:bg-slate-700/10",
-    active: "bg-slate-700 hover:bg-slate-800 text-white",
-}[theme]
-
-const alignClasses = {
-    left: "text-left",
-    center: "text-center",
-    right: "text-right",
-}[textAlign]
-
-const baseClasses = "font-semibold cursor-pointer rounded-xl transition-all duration-200"
-
-const combinedClasses = `${baseClasses} ${themeClasses} ${sizeClasses} ${alignClasses} ${classes}`
+const classes = twMerge(buttonVariants({ variant, size }), className)
 ---
 {href ? (
-<a href={href} class={combinedClasses} {...rest}>
-    <slot/>
-</a>
-    ) : (
-<button type={type} class={combinedClasses} {...rest}>
-    <slot/>
-</button>
-    )}
+    <a href={href} class={classes} {...rest}><slot/></a>
+) : (
+    <button type={type} class={classes} {...rest}><slot/></button>
+)}

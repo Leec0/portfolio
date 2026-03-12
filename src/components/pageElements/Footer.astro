@@ -4,11 +4,11 @@ import {getCurrentYear} from "../../lib/readYear";
 import Curve from "./Curve.astro";
 import Socials from "./Socials.astro";
 ---
-<section class="bg-slate-900 text-white relative mt-12">
+<section class="bg-night-subtle text-text relative mt-12 overflow-hidden">
     <Curve type="Bottom"/>
-    <section class="px-4 py-8">
+    <section class="px-4 pt-16 pb-8">
         <section class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 items-center mx-auto max-w-5xl">
-            <p class="text-center md:text-start col-auto">© {getCurrentYear()} leeco.dev</p>
+            <p class="text-center md:text-start col-auto text-text-muted">© {getCurrentYear()} leeco.dev</p>
             <Brand/>
             <section class="col-auto flex flex-row justify-center md:justify-end items-center gap-4">
                 <Socials/>
