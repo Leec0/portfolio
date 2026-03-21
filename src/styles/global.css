@@ -58,15 +58,31 @@
             left 300ms ease-in-out,
             right 300ms ease-in-out;
     }
+}
 
-    /* Subtle liquid glass — semi-transparent bg + blur + faint top-edge highlight */
+@layer components {
     .glass {
-        background: color-mix(in srgb, var(--color-night-surface) 70%, transparent);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-color: color-mix(in srgb, var(--color-kiwi) 12%, transparent);
+        @apply backdrop-blur-lg backdrop-saturate-[1.4] bg-night-surface/65 border border-kiwi/12 isolate;
+        transform: translateZ(0);
         box-shadow:
-            0 4px 24px color-mix(in srgb, #000 35%, transparent),
+            0 4px 24px rgb(from var(--color-night-subtle) r g b / 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .glass-heavy {
+        @apply backdrop-blur-xl backdrop-saturate-[1.6] bg-night-surface/85 border border-kiwi/20 isolate;
+        transform: translateZ(0);
+        box-shadow:
+            0 8px 40px rgb(from var(--color-night-subtle) r g b / 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .glass-kiwi {
+        @apply backdrop-blur-lg backdrop-saturate-[1.4] bg-night-surface/65 border border-kiwi/28 isolate;
+        transform: translateZ(0);
+        box-shadow:
+            0 4px 24px rgb(from var(--color-night-subtle) r g b / 0.5),
+            0 0 16px rgb(from var(--color-kiwi) r g b / 0.08),
             inset 0 1px 0 rgba(255, 255, 255, 0.04);
     }
 }
