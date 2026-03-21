@@ -1,7 +1,7 @@
 ---
-title: Global Gourmet
+title: Redesign website Scouts Rupelmonde
 description: A collaborative website project developed as part of the Communications 2 course at KdG Hogeschool.
-slug: global-gourmets-1
+slug: scouts-rupelmonde-redisign
 date: 20 Dec 2024
 ---
 **Global Gourmet** is a collaborative web project developed by a team of four students, including myself, during our second year at [KdG University of Applied Sciences and Arts](https://www.kdg.be/en). This project was part of the **Communications 2** course, aiming to create a dynamic platform that explores global cuisines and cultural food stories.
